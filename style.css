@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('file:///D:/Downloads/heic1806a.jpg') no-repeat center/cover;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.universe {
+    position: relative;
+    width: 900px;
+    height: 900px;
+    perspective: 1200px;
+}
+
+/* Sun */
+.sun {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: url('file:///D:/Downloads/fiery-celestial-orb-glowing-lunar-display_191095-80805-removebg-preview.png') no-repeat center/cover;
+    background-size:170px;
+    box-shadow: 0 0 50px rgba(255, 150, 0, 0.9);
+    transform: translate(-50%, -50%);
+}
+
+/* Orbit Paths */
+.orbit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+}
+
+.orbit.mercury-orbit { width: 180px; height: 180px; }
+.orbit.venus-orbit   { width: 250px; height: 250px; }
+.orbit.earth-orbit   { width: 330px; height: 330px; }
+.orbit.mars-orbit    { width: 400px; height: 400px; }
+.orbit.jupiter-orbit { width: 550px; height: 550px; }
+.orbit.saturn-orbit  { width: 700px; height: 700px; }
+
+/* Planet Containers */
+.planet-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: orbit linear infinite;
+}
+
+/* Planets */
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.planet:hover {
+    box-shadow: 0 0 40px cyan, 0 0 80px blue;
+}
+
+/* Tooltip */
+.tooltip {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    transform: translate(-50%, -120%);
+}
+
+/* Show Tooltip on Hover */
+.planet:hover + .tooltip {
+    display: block;
+}
+
+/* Individual Planets */
+.mercury-container { animation-duration: 5s; }
+.venus-container   { animation-duration: 8s; }
+.earth-container   { animation-duration: 10s; }
+.mars-container    { animation-duration: 15s; }
+.jupiter-container { animation-duration: 25s; }
+.saturn-container  { animation-duration: 30s; }
+
+.mercury { width: 20px; height: 20px; background: gray; }
+.venus   { width: 30px; height: 30px; background: gold; }
+.earth   { width: 40px; height: 40px; background: url('https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg') no-repeat center/cover; }
+.mars    { width: 35px; height: 35px; background: url('https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg') no-repeat center/cover; }
+.jupiter { width: 80px; height: 80px; background: url('https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg') no-repeat center/cover; }
+.saturn  { width: 70px; height: 70px; background: url('https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg') no-repeat center/cover; }
+
+/* Saturn Rings */
+.saturn-ring {
+    position: absolute;
+    width: 100px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+/* Animation */
+@keyframes orbit {
+    0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
